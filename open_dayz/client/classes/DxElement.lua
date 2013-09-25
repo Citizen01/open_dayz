@@ -63,6 +63,10 @@ function DxElement:destructor()
 end
 
 function DxElement:anyChange()
+	if self.m_CacheArea then
+		return self.m_CacheArea:updateArea()
+	end
+
 	local cacheElement = self.m_Parent
 	while cacheElement do
 		-- Redraw everything in this area

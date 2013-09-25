@@ -143,6 +143,9 @@
 		<script src="client/classes/GUI/GUIGridList.lua" type="client"/>
 		<script src="client/classes/GUI/GUIGridListItem.lua" type="client"/>
 		
+		<!-- Special GUI elements -->
+		<script src="client/classes/GUI/MessageBox.lua" type="client"/>
+		
 		<script src="client/classes/GUIForms/FormTest.lua" type="client"/>
 		<script src="client/classes/GUIForms/MouseMenu/PlayerMouseMenu.lua" type="client"/>
 		<script src="client/classes/GUIForms/MouseMenu/VehicleMouseMenu.lua" type="client"/>
@@ -200,6 +203,10 @@
 	
 	<transferfile src="files/shader/mta-helper.fx" onDemand="false"/>
 	<transferfile src="files/shader/water.fx" onDemand="false"/>
+	
+	<transferfile src="files/audio/Message.mp3" onDemand="false"/>
+	
+	<transferfile src="files/images/Info.png" onDemand="false"/>
 	
 	<transferfile src="files/images/GUI/Button.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Button_hover.png" onDemand="false"/>

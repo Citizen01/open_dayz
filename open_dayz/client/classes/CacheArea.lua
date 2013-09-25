@@ -17,11 +17,22 @@ function CacheArea:constructor(posX, posY, width, height, containsGUIElements, c
 	self:setCachingEnabled(cachingEnabled == nil and true or cachingEnabled)
 end
 
+function CacheArea:destructor()
+	if self.m_RenderTarget and isElement(self.m_RenderTarget) then
+		destroyElement(self.m_RenderTarget)
+	end
+	DxElement.destructor(self)
+end
+
 function CacheArea:updateArea()
 	self.m_ChangedSinceLastFrame = true
 	
 	-- Go up the tree
 	if self.m_Parent then self.m_Parent:anyChange() end
+end
+
+function CacheArea:anyChange()
+	return self:updateArea()
 end
 
 function CacheArea:drawCached()
@@ -71,13 +82,13 @@ function CacheArea:drawCached()
 end
 
 function CacheArea:draw(incache)
-	if self.m_CachingEnabled and not incache then
-		if self:drawCached() then return end
-	end
-
 	-- Do not waste time in drawing invisible elements
 	if self.m_Visible == false then
 		return
+	end
+
+	if self.m_CachingEnabled and not incache then
+		if self:drawCached() then return end
 	end
 	
 	-- Draw Children

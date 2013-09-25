@@ -27,7 +27,8 @@ function Core:constructor()
 	if DEBUG then
 		GUITool:new()
 	end
-	self.m_LoginForm = FormLogin:new()
+	self.m_Forms = {}
+	self.m_Forms.Login = FormLogin:new()
 	
 	-- Initialize HUD system
 	HUDArea:new()
@@ -75,4 +76,8 @@ end
 
 function Core:get(group, key)
 
+end
+
+function Core:getForm(formName)
+	return self.m_Forms[formName]
 end

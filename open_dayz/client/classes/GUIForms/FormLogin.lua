@@ -46,7 +46,7 @@ function FormLogin:ButtonLogin_Click()
 	if self.m_EditUsername:getText() ~= "" and self.m_EditPassword:getText() ~= "" then
 		localPlayer:login(self.m_EditUsername:getText(), self.m_EditPassword:getText()--[[, self.m_CheckLogin:isChecked()--]])
 	else
-		localPlayer:sendMessage("Please insert a valid username and password", 255, 0, 0)
+		MessageBox:new("Please insert a valid username and password")
 	end
 end
 

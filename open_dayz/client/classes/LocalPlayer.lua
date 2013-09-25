@@ -20,9 +20,9 @@ end
 function LocalPlayer:login(username, password, remember)
 	password = sha256("dayz.."..password)
 	
-	Core:set("login", "remember", remember == true)
-	Core:set("login", "password", remember and password)
-	Core:set("login", "username", remember and username)
+	core:set("login", "remember", remember == true)
+	core:set("login", "password", remember and password)
+	core:set("login", "username", remember and username)
 	
 	-- Trigger Server RPC
 	self:rpc(RPC_PLAYER_LOGIN, username, password)
@@ -40,6 +40,8 @@ end
 
 function LocalPlayer:onLogin()
 	HUDArea:getSingleton():show()
+	core:getForm("Login"):close()
+	MessageBox:new("Successfully logged in")
 end
 
 function LocalPlayer:rpc(rpc, ...)
