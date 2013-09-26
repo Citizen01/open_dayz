@@ -13,8 +13,7 @@ Due to the open source nature of the project, everyone is welcome to fork and su
 We also providing an addon interface, allowing other users to contribute their extensions to the main gamemode independendly from others. These addons have access to large parts of the gamemode via a simple API layer.
 
 <h3>MTA:SA</h3>
-We're relying on the Lua scripting interface of the Multi Theft Auto : San Andreas mod, if you haven't played it you can download it from mtasa.com!
+We're relying on the Lua scripting interface of the Multi Theft Auto : San Andreas mod, if you haven't played it you can download it from http://mtasa.com!
 
 <h3>Important URLs</h3>
-<strong>Mantis Bugtracker:</strong> http://www.open-dayz.tk/mantis/
 <strong>Forum:</strong> http://www.open-dayz.tk/forum/ 
