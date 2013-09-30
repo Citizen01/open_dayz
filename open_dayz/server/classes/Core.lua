@@ -87,7 +87,6 @@ function Core:destructor()
 end
 
 function Core:get(group, key)
-	if not self.m_MainConfig then outputConsole(debug.traceback()) end
 	if group == "client" then
 		return self.m_ClientConfig[key]
 	else

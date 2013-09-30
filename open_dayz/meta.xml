@@ -130,6 +130,7 @@
 		<script src="client/classes/GUI/abstract/GUIFontContainer.lua" type="client"/>
 		<script src="client/classes/GUI/GUIElement.lua" type="client"/>
 		<script src="client/classes/GUI/GUIButton.lua" type="client"/>
+		<script src="client/classes/GUI/GUICheckbox.lua" type="client"/>
 		<script src="client/classes/GUI/GUIDebugging.lua" type="client"/>
 		<script src="client/classes/GUI/GUIInputControl.lua" type="client"/>
 		<script src="client/classes/GUI/GUIEdit.lua" type="client"/>
@@ -210,6 +211,8 @@
 	
 	<transferfile src="files/images/GUI/Button.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Button_hover.png" onDemand="false"/>
+	<transferfile src="files/images/GUI/Checkbox.png" onDemand="false"/>
+	<transferfile src="files/images/GUI/Checkbox_checked.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Cursor.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Editbox.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Window.png" onDemand="false"/>

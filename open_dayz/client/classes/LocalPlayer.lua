@@ -17,8 +17,10 @@ function LocalPlayer:destructor()
 	
 end
 
-function LocalPlayer:login(username, password, remember)
-	password = sha256("dayz.."..password)
+function LocalPlayer:login(username, password, remember, passwordAlreadyHashed)
+	if not passwordAlreadyHashed then
+		password = sha256("dayz.."..password)
+	end
 	
 	core:set("login", "remember", remember == true)
 	core:set("login", "password", remember and password)

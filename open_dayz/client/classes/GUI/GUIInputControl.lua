@@ -38,6 +38,13 @@ addEventHandler("onClientGUIChanged", GUIInputControl.ms_Edit,
 	function()
 		if GUIInputControl.ms_CurrentInputFocus then
 			GUIInputControl.ms_CurrentInputFocus:setText(guiGetText(source))
+			
+			if GUIInputControl.ms_CurrentInputFocus.onInternalEditInput then
+				GUIInputControl.ms_CurrentInputFocus:onInternalEditInput()
+			end
+			if GUIInputControl.ms_CurrentInputFocus.onEditInput then
+				GUIInputControl.ms_CurrentInputFocus:onEditInput()
+			end
 		end
 	end
 )

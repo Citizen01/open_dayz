@@ -6,7 +6,7 @@
 -- *
 -- ****************************************************************************
 GUIGridList = inherit(GUIElement)
---inherit(GUIGridList, GUIScrollableArea)
+inherit(GUIGridList, GUIScrollableArea)
 
 function GUIGridList:constructor(posX, posY, width, height, parent)
 	GUIElement.constructor(self, posX, posY, width, height, parent)

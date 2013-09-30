@@ -7,11 +7,15 @@
 -- ****************************************************************************
 GUIScrollableArea = inherit(GUIElement)
 
-function GUIScrollableArea:constructor(documentWidth, documentHeight)
+function GUIScrollableArea:constructor(documentWidth, documentHeight, verticalScrollbar, horizontalScrollbar)
 	self.m_pPageTarget = dxCreateRenderTarget(documentWidth, documentHeight, true)
 
 	self.m_ScrollX = 0
 	self.m_ScrollY = 0
+	
+	if verticalScrollbar or horizontalScrollbar then
+		self:createScrollbars(verticalScrollbar, horizontalScrollbar)
+	end
 end
 
 function GUIScrollableArea:drawThis()
@@ -52,9 +56,23 @@ function GUIScrollableArea:draw(incache)
 	if self.drawThis then self:drawThis(incache) end
 end
 
-function GUIScrollableArea:scroll(x, y)
+CGUIElement._change.m_ScrollX = CGUIElement.anyChange
+CGUIElement._change.m_ScrollY = CGUIElement.anyChange
+function GUIScrollableArea:setScrollPosition(x, y)
 	self.m_ScrollX = x
 	self.m_ScrollY = y
+	
+	if self.m_VerticalScrollbar then
+		self.m_VerticalScrollbar:setScrollPosition(self.m_ScrollY / self.m_Height)
+	end
+	
+	if self.m_HorizontalScrollbar then
+		self.m_HorizontalScrollbar:setScrollPosition(self.m_ScrollX / self.m_Width)
+	end
+end
+
+function GUIScrollableArea:getScrollPosition()
+	return self.m_ScrollX, self.m_ScrollY
 end
 
 function GUIScrollableArea:resize(documentWidth, documentHeight)
@@ -62,8 +80,17 @@ function GUIScrollableArea:resize(documentWidth, documentHeight)
 	self.m_pPageTarget = dxCreateRenderTarget(documentWidth, documentHeight, true)
 end
 
-CGUIElement._change.m_ScrollX = CGUIElement.anyChange
-CGUIElement._change.m_ScrollY = CGUIElement.anyChange
+function GUIScrollableArea:createScrollbars(verticalScrollbar, horizontalScrollbar)
+	if verticalScrollbar then
+		self.m_VerticalScrollbar = GUIVerticalScrollbar:new(self.m_PosX + self.m_Width - 20, 0, 20, self.m_Height, self)
+	end
+end
 
-	
-	
+function GUIScrollableArea:onInternalMouseWheelUp()
+	outputDebug("GUIScrollableArea:onInternalMouseWheelUp()")
+	self:setScrollPosition(self.m_ScrollX, self.m_ScrollY - 5)
+end
+
+function GUIScrollableArea:onInternalMouseWheelDown()
+	self:setScrollPosition(self.m_ScrollX, self.m_ScrollY + 5)
+end

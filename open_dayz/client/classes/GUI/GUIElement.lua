@@ -21,6 +21,10 @@ function GUIElement:constructor(posX, posY, width, height, parent)
 end
 
 function GUIElement:performChecks(mouse1, mouse2, cx, cy)
+	if not self.m_Visible then
+		return
+	end
+
 	local absoluteX, absoluteY = self.m_AbsoluteX, self.m_AbsoluteY
 	if self.m_CacheArea then
 		absoluteX = absoluteX + self.m_CacheArea.m_AbsoluteX
@@ -100,3 +104,30 @@ end
 function GUIElement.getHoveredElement()
 	return GUIElement.HoveredElement
 end
+
+-- Static mouse wheel event checking
+addEventHandler("onClientResourceStart", resourceRoot,
+	function()
+		bindKey("mouse_wheel_up", "down",
+			function()
+				outputDebug("mouse_wheel_up bind called")
+				local hoveredElement = GUIElement.getHoveredElement()
+				if hoveredElement then
+					outputDebug("Hovered element exists")
+					outputDebug(table.find(_G, getmetatable(hoveredElement).__index))
+					if hoveredElement.onInternalMouseWheelUp then hoveredElement:onInternalMouseWheelUp() end
+					if hoveredElement.onMouseWheelUp then hoveredElement:onMouseWheelUp() end
+				end
+			end
+		)
+		bindKey("mouse_wheel_down", "down",
+			function()
+				local hoveredElement = GUIElement.getHoveredElement()
+				if hoveredElement then
+					if hoveredElement.onInternalMouseWheelDown then hoveredElement:onInternalMouseWheelDown() end
+					if hoveredElement.onMouseWheelDown then hoveredElement:onMouseWheelDown() end
+				end
+			end
+		)
+	end
+)

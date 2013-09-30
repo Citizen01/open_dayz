@@ -18,6 +18,9 @@ function Core:constructor()
 	-- Initialize Server
 	server = Server:new()
 	
+	-- Initialize config system
+	self.m_MainConfig = ConfigXML:new("clientconfig.xml")
+	
 	-- Initialize GUI system
 	GUIRenderer.constructor()
 	GUICursor:new()
@@ -71,11 +74,11 @@ function Core:onConfigRetrieve()
 end
 
 function Core:set(group, key, value)
-
+	return self.m_MainConfig:set(group, key, value)
 end
 
 function Core:get(group, key)
-
+	return self.m_MainConfig:get(group, key)
 end
 
 function Core:getForm(formName)
