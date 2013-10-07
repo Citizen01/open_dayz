@@ -20,6 +20,12 @@ function PlayerManager:constructor()
 	self.m_BleedQueue = Queue:new(100, function() return getElementsByType("player") end, Player.processBloodLoss)
 	self.m_NecessityQueue = Queue:new(5000, function() return getElementsByType("player") end, Player.processNecessities)
 	if not DEBUG then self.m_SavingQueue = Queue:new(10000, function() return getElementsByType("player") end, Player.save) end
+	
+	-- Register timed pulse handlers
+	core:getMinutePulse():registerHandler(bind(self.onMinutePulse, self))
+	
+	-- Temp default scoreboard entries
+	exports.scoreboard:scoreboardAddColumn("survived_time", root, 100, "Survived time")
 end
 
 function PlayerManager:playerJoin()
@@ -60,4 +66,9 @@ function PlayerManager:playerChat(msg, mtype)
 			end
 		end
 	end
+end
+
+function PlayerManager:onMinutePulse()
+	-- Increment survived time
+	table.foreachi(getElementsByType("player"), function(k, p) p:setSurvivedTime(p:getSurvivedTime() + 60) end)
 end

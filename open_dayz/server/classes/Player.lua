@@ -1,7 +1,7 @@
 -- ****************************************************************************
 -- *
 -- *  PROJECT:	 Open MTA:DayZ
--- *  FILE:		server/classes/Player.lua
+-- *  FILE:      server/classes/Player.lua
 -- *  PURPOSE:	 Player element class
 -- *
 -- ****************************************************************************
@@ -21,14 +21,16 @@ function Player:constructor()
 	self.m_Temperature = 37
 	self.m_Blood = 12000
 	self.m_BloodLoss = 0
+	self.m_SurvivedTime = 0 -- Unit: seconds
+	
 	self.m_Status = {}
 	local status = self.m_Status
-	status.BrokenBone = false;
-	status.Shock = false;
-	status.Pain = false;
-	status.Infected = false;
-	status.Unconscious = false;
-	status.Cold = false;
+	status.BrokenBone = false
+	status.Shock = false
+	status.Pain = false
+	status.Infected = false
+	status.Unconscious = false
+	status.Cold = false
 end
 
 function Player:destructor()
@@ -276,6 +278,17 @@ end
 
 function Player:addDeaths(n)
 	self.m_Deaths = self.m_Deaths + n
+end
+
+function Player:getSurvivedTime()
+	return self.m_SurvivedTime
+end
+
+function Player:setSurvivedTime(time)
+	self.m_SurvivedTime = time
+	
+	-- Default scoreboard fix (as long as we do not have an alternative scoreboard)
+	setElementData(self, "survived_time", self.m_SurvivedTime/60)
 end
 
 function Player:chat(chatid, message)

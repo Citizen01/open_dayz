@@ -53,6 +53,9 @@ function Core:constructor()
 	NpcRPC:new()
 	VehicleRPC:new()
 	
+	-- Create "timed pulses"
+	self.m_MinutePulse = TimedPulse:new(60000)
+	
 	-- Initialize managers
 	TransferManager:new()
 	PlayerManager:new()
@@ -74,6 +77,7 @@ function Core:constructor()
 	if not DEBUG then
 		Statistics:new()
 	end
+	
 end
 
 
@@ -84,6 +88,8 @@ function Core:destructor()
 	
 	self.m_MainConfig:delete()
 	sql:delete()
+	
+	self.m_MinutePulse:delete()
 end
 
 function Core:get(group, key)
@@ -133,4 +139,8 @@ end
 
 function Core:getAdminChat()
 	return self.m_AdminChat
+end
+
+function Core:getMinutePulse()
+	return self.m_MinutePulse
 end

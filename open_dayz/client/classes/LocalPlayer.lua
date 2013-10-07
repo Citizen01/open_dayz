@@ -44,6 +44,7 @@ function LocalPlayer:onLogin()
 	HUDArea:getSingleton():show()
 	core:getForm("Login"):close()
 	MessageBox:new("Successfully logged in")
+	showCursor(false)
 end
 
 function LocalPlayer:rpc(rpc, ...)
