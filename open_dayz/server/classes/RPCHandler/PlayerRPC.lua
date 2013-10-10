@@ -48,6 +48,9 @@ end
 
 function PlayerRPC.inventoryClose(player, client, id)
 	Inventory.fromId(id):close(client)
+	
+	-- Respond to the client that the inventory may be closed
+	client:rpc(RPC_INVENTORY_CLOSE, id)
 end
 
 function PlayerRPC.toElement(element)

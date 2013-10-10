@@ -12,6 +12,7 @@ function Inventory:constructor(id)
 	self.m_Open = false
 	self.m_Id = id
 	self.m_Content = {}
+	self.m_OpenCallback = {}
 	Inventory.Mapping[id] = self
 end
 
@@ -25,15 +26,17 @@ function Inventory.fromId(id)
 	end
 end
 
-function Inventory:open()
-	if self.m_Open then return end
+function Inventory:open(callback)
+	if self.m_Open then 
+		callback(self)
+		return 
+	end
+	self.m_OpenCallback[#self.m_OpenCallback+1] = callback
 	
 	server:rpc(RPC_INVENTORY_OPEN, self.m_Id)
 end
 
 function Inventory:close()
-	if not self.m_Open then return end
-	
 	server:rpc(RPC_INVENTORY_CLOSE, self.m_Id)
 end
 
@@ -87,8 +90,11 @@ function Inventory:hasItem(item, slot)
 	return self:findItem(item, slot) ~= false
 end
 
+function Inventory:remoteClose()
+	self.m_Open = false
+end
+
 function Inventory:fullsyncReceive(syncinfo)
-	-- Assume the server is right to sync this
 	self.m_Open = true
 	
 	-- Delete old content
@@ -103,6 +109,12 @@ function Inventory:fullsyncReceive(syncinfo)
 		for index, item in pairs(v) do
 			self.m_Content[slot][index] = Item.applySync(item)
 			self.m_Content[slot][index]:setInventory(self, slot, index) 
+		end
+	end
+	
+	if #self.m_OpenCallback > 0 then
+		for k, v in pairs(self.m_OpenCallback) do
+			v(self)
 		end
 	end
 end

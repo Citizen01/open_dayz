@@ -20,8 +20,10 @@ function PlayerRPC:constructor()
 	
 	-- Sync RPCs
 	self:register(RPC_PLAYER_NECESSITIES_SYNC, PlayerRPC.playerNecessitiesSync)
+	
 	self:register(RPC_INVENTORY_FULLSYNC, PlayerRPC.inventoryFullSync)
 	self:register(RPC_INVENTORY_SYNC, PlayerRPC.inventorySync)
+	self:register(RPC_INVENTORY_CLOSE, PlayerRPC.inventoryClose)
 end
 
 function PlayerRPC.toElement(element)
@@ -89,4 +91,8 @@ end
 
 function PlayerRPC.inventoryFullSync(player, id, syncinfo)
 	Inventory.fromId(id):fullsyncReceive(syncinfo)
+end
+
+function PlayerRPC.inventoryClose(player, id)
+	Inventory.fromId(id):remoteClose()
 end
