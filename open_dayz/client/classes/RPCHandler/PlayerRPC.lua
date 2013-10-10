@@ -20,6 +20,8 @@ function PlayerRPC:constructor()
 	
 	-- Sync RPCs
 	self:register(RPC_PLAYER_NECESSITIES_SYNC, PlayerRPC.playerNecessitiesSync)
+	self:register(RPC_INVENTORY_FULLSYNC, PlayerRPC.inventoryFullSync)
+	self:register(RPC_INVENTORY_SYNC, PlayerRPC.inventorySync)
 end
 
 function PlayerRPC.toElement(element)
@@ -79,4 +81,12 @@ function PlayerRPC.playerNecessitiesSync(player, hunger, thirst)
 	
 	-- Update HUD cache
 	HUDArea:getSingleton():updateArea()
+end
+
+function PlayerRPC.inventorySync(player, id, syncinfo)
+	Inventory.fromId(id):syncReceive(syncinfo)
+end
+
+function PlayerRPC.inventoryFullSync(player, id, syncinfo)
+	Inventory.fromId(id):fullsyncReceive(syncinfo)
 end

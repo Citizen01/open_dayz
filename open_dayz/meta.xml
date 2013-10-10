@@ -57,7 +57,6 @@
 		<script src="server/defaultConfig.lua" type="server"/>
 		<script src="server/classes/Group.lua" type="server"/>
 		<script src="server/classes/Inventory/Inventory.lua" type="server"/>
-		<script src="server/classes/Inventory/InventorySlot.lua" type="server"/>
 		<script src="server/classes/Inventory/Item.lua" type="server"/>
 		<script src="server/classes/Statistics.lua" type="server"/>
 		<script src="server/classes/Map.lua" type="server"/>
@@ -162,6 +161,9 @@
 		<script src="client/classes/Speedometer.lua" type="client"/>
 		<script src="client/classes/Zombie.lua" type="client"/>
 		
+		<script src="client/classes/Inventory/Inventory.lua" type="client"/>
+		<script src="client/classes/Inventory/Item.lua" type="client"/>
+		
 		<script src="client/classes/HUD/HUDElement.lua" type="client"/>
 		<script src="client/classes/HUD/HUDArea.lua" type="client"/>
 		<script src="client/classes/HUD/HUDHunger.lua" type="client"/>
@@ -185,6 +187,7 @@
 		<!-- Entry script -->
 		<script src="client/main.lua" type="client"/>
 		<script src="client/tempLogin.lua" type="client"/>
+		<script src="server/tempInventory.lua" type="server"/>
 		
 	<!-- Shared (loaded later due to dependencies) -->
 	<script src="shared/items.lua"		type="shared"/>

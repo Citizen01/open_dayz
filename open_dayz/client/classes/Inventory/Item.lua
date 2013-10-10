@@ -1,20 +1,26 @@
 -- ****************************************************************************
 -- *
 -- *  PROJECT:     Open MTA:DayZ
--- *  FILE:        server/classes/Item.lua
+-- *  FILE:        client/classes/Item.lua
 -- *  PURPOSE:     Item class
 -- *
 -- ****************************************************************************
 Item = inherit(Object)
+Item.m_ItemId = ITEM_NONE
 
-function Item:constructor(itemid)
-	self.m_ItemId = itemid
+function Item:derived_constructor()
 	self.m_Data = {}
 	self.m_InventoryInfo = {}
 end
 
-function Item:getName()
-	return Items[self.m_ItemId].Name
+function Item.applySync(syncinfo)
+	local id = syncinfo.id
+	local i = Items[id].Class:new(id)
+	
+	i.m_Data = syncinfo
+	i.m_Data.id = nil
+	
+	return i
 end
 
 function Item:setInventory(inv, slot, index)
@@ -30,6 +36,7 @@ function Item:get(name)
 end
 
 function Item:set(name, value)
+	assert(self.m_Data[name].cc)
 	self.m_Data[name] = value
 	self:change()
 end
@@ -41,25 +48,14 @@ end
 function Item:syncdata()
 	local sdata = {}
 	for k, v in pairs(self.m_Data) do
-		if v.sync then
-			sdata[k].cc = v.cc
-			sdata[k].value = v.value
+		if v.cc then
+			sdata[k] = v.value
 		end
 	end
-	sdata.id = self.m_ItemId
 	return sdata
 end
 
-function Item:dbdata()
-	local ddata = {}
-	for k, v in pairs(self.m_Data) do
-		ddata[k] = v.value
-	end
-	ddata.id = self.m_ItemId
-	return ddata
-end
-
-function Item:use(player)
+function Item:use()
 	-- Implement this function in derived classes
 	-- By default this resolves to "no action"
 end

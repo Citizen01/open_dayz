@@ -52,22 +52,9 @@ DBSchema.player = {
 
 DBSchema.inventory = {
 { name = "Id", 				vartype = "int", allowNULL = false, autoincrement = true, unsigned = true, primaryKey = true };
-{ name = "GENERIC",			vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "PRIMARY_WEAPON",	vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "SECONDARY_WEAPON",vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "TOOL_HEAD",		vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "MAIN",			vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "SIDE",			vartype = "int", allowNULL = false, unsigned = true, default = -1 };
-{ name = "TOOLBELT",		vartype = "int", allowNULL = false, unsigned = true, default = -1 };
+{ name = "Data", 			vartype = "text", unsigned = true, allowNULL = false };
 }
 
-DBSchema.inventory_slot = 
-{
-{ name = "Id", 	 	vartype = "int",  autoincrement = true, unsigned = true, allowNULL = false, primaryKey = true };
-{ name = "Width", 	vartype = "int",  unsigned = true, allowNULL = false };
-{ name = "Height", 	vartype = "int",  unsigned = true, allowNULL = false };
-{ name = "Content", vartype = "text", unsigned = true, allowNULL = false };
-}
 
 DBSchema.groups = {
 { name = "Id",	vartype = "int",	unsigned = true, autoincrement = true, allowNULL = false, primaryKey = true };

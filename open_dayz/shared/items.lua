@@ -19,36 +19,38 @@ enum("ITEM_SLOT_TOOLBELT", 			"item_slot") -- 8 Slots
 --  Leave a few free Ids so we can add some items in order later
 -- 	Max Stack == 0 means unstackable
 Items = {
+-- Nothing
+NONE = { 0, "Nothing", 0, 0, ITEM_SLOT_GENERIC },
 -- Primary Weapons (UID 1 to 9)
--- Name  		UID	Written Name				Weight	Size		Max Stack 	Slot	
-M4 			= {	1, 	"M4",						3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-CZ550 		= {	2, 	"CZ 550",					3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-WINCHESTER 	= { 3, 	"Winchester 1866",			3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-SPAZ		= { 4, 	"SPAZ-12 Combat Shotgun",	3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-SHOTGUN		= { 5,  "Sawn-Off Shotgun",			3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-AK_47		= { 6,  "AK-47",					3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
-LEE_ENFIELD	= { 7,  "Lee Enfield",				3,		{1,1},		0,			ITEM_SLOT_PRIMARY_WEAPON },
+-- Name  		UID	Written Name				Weight	Max Stack 	Slot	
+M4 			= {	1, 	"M4",						3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+CZ550 		= {	2, 	"CZ 550",					3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+WINCHESTER 	= { 3, 	"Winchester 1866",			3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+SPAZ		= { 4, 	"SPAZ-12 Combat Shotgun",	3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+SHOTGUN		= { 5,  "Sawn-Off Shotgun",			3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+AK_47		= { 6,  "AK-47",					3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
+LEE_ENFIELD	= { 7,  "Lee Enfield",				3,			0,			ITEM_SLOT_PRIMARY_WEAPON },
 
 -- Secondary Weapons (UID 10 to 30)
--- Name  		UID	Written Name	Weight		Size		Max Stack 	Slot	
-M1911 		= { 10, "M1911", 		2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-M9SD	 	= { 11, "M9 SD", 		2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-PDW 		= { 12, "PDW", 			2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-MP5A5 		= { 13, "MP5A5", 		3,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-DEAGLE		= { 14, "Desert Eagle", 2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-KNIFE		= { 15, "Hunting Knife",1,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-HATCHET 	= { 16, "Hatchet", 		2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-BASEBALLBAT = { 17, "Baseball Bat", 2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-SHOVEL 		= { 18, "Shovel", 		2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
-GOLF 		= { 19, "Golf Club", 	2,			{1,1},		0,			ITEM_SLOT_SECONDARY_WEAPON },
+-- Name  		UID	Written Name	Weight			Max Stack 	Slot	
+M1911 		= { 10, "M1911", 		2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+M9SD	 	= { 11, "M9 SD", 		2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+PDW 		= { 12, "PDW", 			2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+MP5A5 		= { 13, "MP5A5", 		3,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+DEAGLE		= { 14, "Desert Eagle", 2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+KNIFE		= { 15, "Hunting Knife",1,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+HATCHET 	= { 16, "Hatchet", 		2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+BASEBALLBAT = { 17, "Baseball Bat", 2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+SHOVEL 		= { 18, "Shovel", 		2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
+GOLF 		= { 19, "Golf Club", 	2,				0,			ITEM_SLOT_SECONDARY_WEAPON },
 
--- Toolbelt
-MEDICKIT	= { 20, "Medic Kit",	1,			{1,1},		5,			ITEM_SLOT_TOOLBELT,			ItemMedicKit },
-RADAR		= { 21, "Radar",		1,			{1,1},		0,			ITEM_SLOT_TOOLBELT,			ItemRadar },
+-- Toolbelt (UID 30-40)
+MEDICKIT	= { 30, "Medic Kit",	1,				5,			ITEM_SLOT_TOOLBELT,			ItemMedicKit },
+RADAR		= { 31, "Radar",		1,				0,			ITEM_SLOT_TOOLBELT,			ItemRadar },
 
--- Food
-BURGER		= { 22, "Burger",		1,			{1,1},		0,			ITEM_SLOT_MAIN,				ItemFood },
-PIZZA		= { 23, "Pizza",		1,			{1,1},		0,			ITEM_SLOT_MAIN,				ItemFood },
+-- Food (UID 40-60)
+BURGER		= { 40, "Burger",		1,				0,			ITEM_SLOT_MAIN,				ItemFood },
+PIZZA		= { 41, "Pizza",		1,				0,			ITEM_SLOT_MAIN,				ItemFood },
 
 -- Add more below
 }
@@ -56,7 +58,7 @@ PIZZA		= { 23, "Pizza",		1,			{1,1},		0,			ITEM_SLOT_MAIN,				ItemFood },
 -- Apply some magic to allow accessing stuff in a nice way
 local NiceItems = {}
 for k, v in pairs(Items) do
-	NiceItems[k] = { UID = v[1], Name = v[2], Weight = v[3], Size = v[4], MaxStack = v[5], Slot = v[6], Class = v[7] }
+	NiceItems[k] = { UID = v[1], Name = v[2], Weight = v[3], Size = v[4], MaxStack = v[5], Slot = v[6], Class = v[7] or Item }
 	NiceItems[v[1]] = NiceItems[k]
 end
 Items = NiceItems

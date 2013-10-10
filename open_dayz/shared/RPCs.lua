@@ -12,11 +12,16 @@ RPCs = {
 	enum("RPC_NPC_CREATE", "rpc");
 	enum("RPC_ZOMBIE_CREATE", "rpc");
 	
-	-- register / login
+	-- Register / Login
 	enum("RPC_PLAYER_LOGIN", "rpc");
 	enum("RPC_PLAYER_REGISTER", "rpc");
 	enum("RPC_PLAYER_NECESSITIES_SYNC", "rpc");
-	-- 
+	
+	-- Inventory RPCs
+	enum("RPC_INVENTORY_SYNC", "rpc");
+	enum("RPC_INVENTORY_FULLSYNC", "rpc");
+	enum("RPC_INVENTORY_OPEN", "rpc");
+	enum("RPC_INVENTORY_CLOSE", "rpc");
 	
 	-- NPC RPCs
 	enum("RPC_NPC_MOVE", "rpc");

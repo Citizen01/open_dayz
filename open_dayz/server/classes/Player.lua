@@ -60,6 +60,7 @@ function Player:save()
 		
 	if self.m_Inventory.m_Id == -1 then
 		self.m_Inventory:save()
+		assert(self.m_Inventory.m_Id ~= -1)
 		sql:queryExec("UPDATE ??_player SET Inventory = ? WHERE Id = ?;", sql:getPrefix(), self.m_Inventory.m_Id, self.m_Id)
 	else
 		self.m_Inventory:save()
@@ -75,7 +76,7 @@ function Player:load()
 	self.m_Locale	= row.Locale
 	self.m_Inventory = Inventory:new(row.Inventory)
 	self.m_Inventory:load()
-	--self.m_Inventory:addClient(self) -- Jusonex: There is no method named "addClient"?!
+	self.m_Inventory:open(self)
 	self.m_Kills	= tonumber(row.Kills)
 	self.m_Deaths	= tonumber(row.Deaths)
 	self.m_Blood = tonumber(row.Blood)
