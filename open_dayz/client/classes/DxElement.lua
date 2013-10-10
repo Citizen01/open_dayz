@@ -23,6 +23,7 @@ function DxElement:constructor(posX, posY, width, height, parent)
 	self.m_Height = height
 	self.m_Children = {}
 	self.m_Visible = true
+	self.m_Alpha = 255
 	
 	-- Caching in Rendertargets
 	self:anyChange()
@@ -163,4 +164,13 @@ function DxElement:isCursorWithinBox(x1, y1, x2, y2)
 	end
 
 	return false
+end
+
+function DxElement:setAlpha(alpha)
+	self.m_Alpha = alpha
+	self:anyChange()
+end
+
+function DxElement:getAlpha()
+	return self.m_Alpha
 end

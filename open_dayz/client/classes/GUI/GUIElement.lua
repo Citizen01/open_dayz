@@ -110,11 +110,8 @@ addEventHandler("onClientResourceStart", resourceRoot,
 	function()
 		bindKey("mouse_wheel_up", "down",
 			function()
-				outputDebug("mouse_wheel_up bind called")
 				local hoveredElement = GUIElement.getHoveredElement()
 				if hoveredElement then
-					outputDebug("Hovered element exists")
-					outputDebug(table.find(_G, getmetatable(hoveredElement).__index))
 					if hoveredElement.onInternalMouseWheelUp then hoveredElement:onInternalMouseWheelUp() end
 					if hoveredElement.onMouseWheelUp then hoveredElement:onMouseWheelUp() end
 				end

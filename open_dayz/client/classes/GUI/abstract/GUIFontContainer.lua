@@ -24,6 +24,10 @@ function GUIFontContainer:setText(text)
 	self:anyChange()
 end
 
+function GUIFontContainer:isEmpty()
+	return self.m_Text == ""
+end
+
 function GUIFontContainer:getFont()
 	return self.m_Font
 end

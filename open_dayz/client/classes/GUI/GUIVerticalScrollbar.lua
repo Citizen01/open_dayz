@@ -52,8 +52,8 @@ end
 
 function GUIVerticalScrollbar:drawThis()
 	-- Draw scroll bar (rectangle)
-	dxDrawImage(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, "files/images/GUI/scrollbar.png")
+	--dxDrawImage(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, "files/images/GUI/scrollbar.png")
 
 	-- Draw scrollbar element
-	dxDrawImage(self.m_AbsoluteX + GUI_SCROLLBAR_ELEMENT_MARGIN, self.m_AbsoluteY + GUI_SCROLLBAR_ELEMENT_MARGIN + self.m_ScrollPosition * self.m_Height, self.m_Width - 2*GUI_SCROLLBAR_ELEMENT_MARGIN, 49, "files/images/GUI/scrollbar_element.png")
+	--dxDrawImage(self.m_AbsoluteX + GUI_SCROLLBAR_ELEMENT_MARGIN, self.m_AbsoluteY + GUI_SCROLLBAR_ELEMENT_MARGIN + self.m_ScrollPosition * self.m_Height, self.m_Width - 2*GUI_SCROLLBAR_ELEMENT_MARGIN, 49, "files/images/GUI/scrollbar_element.png")
 end

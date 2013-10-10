@@ -42,3 +42,16 @@ function GUIRenderer.restore(clearedRenderTargets)
 		GUIRenderer.cacheroot:updateArea()
 	end
 end
+
+function GUIRenderer.addRef(ref)
+	table.insert(GUIRenderer.cache, ref)
+end
+
+function GUIRenderer.removeRef(ref)
+	local idx = table.find(GUIRenderer.cache, ref)
+	if not idx then
+		return false
+	end
+	table.remove(GUIRenderer.cache, idx)
+	return true
+end

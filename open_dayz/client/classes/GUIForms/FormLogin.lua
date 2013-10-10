@@ -16,8 +16,9 @@ function FormLogin:constructor()
 	self.m_LabelTitle	= GUILabel:new(90, 50, 300, 70, "Please sign in", 3, self.m_Window)
 	self.m_EditUsername = GUIEdit:new(130, 131, 340, 37, self.m_Window)
 	self.m_EditPassword = GUIEdit:new(130, 179, 340, 37, self.m_Window)
-	self.m_CheckLogin  = GUICheckbox:new(131, 226, 129, 18, "Save Login", self.m_Window)
+	self.m_CheckLogin   = GUICheckbox:new(131, 226, 129, 18, "Save Login", self.m_Window)
 	self.m_ButtonLogin  = GUIButton:new(130, 270, 153, 37, "Login", self.m_Window)
+	self.m_ButtonRegister = GUIButton:new(317, 270, 153, 37, "Register", self.m_Window)
 
 	-- Apply "properities"
 	self.m_EditUsername:setCaption("Username")
@@ -28,6 +29,7 @@ function FormLogin:constructor()
 	self.m_EditUsername:setFontSize(1.5)
 	self.m_EditPassword:setFontSize(1.5)
 	self.m_ButtonLogin:setFont("tahoma")
+	self.m_ButtonRegister:setFont("tahoma")
 	
 	-- Check for saved data
 	if core:get("login", "remember") then
@@ -44,12 +46,10 @@ function FormLogin:constructor()
 
 	-- Add event handlers
 	self.m_ButtonLogin.onLeftClick = bind(FormLogin.ButtonLogin_Click, self)
+	self.m_ButtonRegister.onLeftClick = bind(FormLogin.ButtonRegister_Click, self)
 	self.m_EditPassword.onEditInput = function() self.m_PasswordAlreadyHashed = false end
 
 	showCursor(true)
-end
-
-function FormLogin:destructor()
 end
 
 function FormLogin:ButtonLogin_Click()
@@ -58,4 +58,9 @@ function FormLogin:ButtonLogin_Click()
 	else
 		MessageBox:new("Please insert a valid username and password")
 	end
+end
+
+function FormLogin:ButtonRegister_Click()
+	-- Open a register form
+	FormRegister:new()
 end

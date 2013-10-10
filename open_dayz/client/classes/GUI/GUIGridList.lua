@@ -5,20 +5,23 @@
 -- *  PURPOSE:     GUI gridlist class
 -- *
 -- ****************************************************************************
-GUIGridList = inherit(GUIElement)
-inherit(GUIGridList, GUIScrollableArea)
+GUIGridList = inherit(GUIScrollableArea)
 
 function GUIGridList:constructor(posX, posY, width, height, parent)
 	GUIElement.constructor(self, posX, posY, width, height, parent)
+	GUIScrollableArea.constructor(self, self.m_Width, math.max(#self.m_Children, 1)*20+100, true, false)
 	
 	self.m_Columns = {}
 end
 
 function GUIGridList:addItem(...)
-	local listItem = GUIGridListItem:new(2, 25 + #self.m_Children * 20, self.m_Width - 4, 20, self)
+	local listItem = GUIGridListItem:new(2, 60 + #self.m_Children * 20, self.m_Width - 4, 20, self)
 	for k, arg in ipairs({...}) do
 		listItem:setColumnText(k, arg)
 	end
+	
+	-- Resize the document
+	self:resize(self.m_Width, 60 + #self.m_Children * 20)
 end
 
 function GUIGridList:removeItem(columnIndex)

@@ -23,12 +23,13 @@ function GUIWindow:constructor(posX, posY, width, height, title, hasTitlebar, ha
 	GUIColorable.constructor(self, Color.White)
 	--GUIMoveable.constructor(self, self.m_AbsoluteX, self.m_AbsoluteY, self.m_AbsoluteX + self.m_Width, self.m_AbsoluteY + 20) -- ToDo: Const for title bar height
 
+	self:setAlpha(200)
 	self.m_HasTitlebar = hasTitlebar
 	self.m_HasCloseButton = hasCloseButton
 
 	if false then --if self.m_HasCloseButton then -- Todo: Since we haven't got a close button, disable that
-		self.m_pCloseButton = CGUIImage(self.m_Width - 40, 4, 35, 27, "files/images/GUI/close_button.png", self)
-		self.m_pCloseButton.onLeftClick = bind(GUIWindow.CloseButton_Click, self)
+		self.m_CloseButton = GUIImage(self.m_Width - 40, 4, 35, 27, "files/images/GUI/close_button.png", self)
+		self.m_CloseButton.onLeftClick = bind(GUIWindow.CloseButton_Click, self)
 	end
 end
 
@@ -42,7 +43,7 @@ function GUIWindow:drawThis()
 
 	-- Draw window
 	--dxDrawImage(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, "files/images/GUI/Window.png")
-	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, tocolor(0, 0, 0, 180))
+	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, tocolor(0, 0, 0, self.m_Alpha))
 
 	-- Draw logo
 	if false then -- Should the logo be optional? | Todo: Since we haven't got a logo, disable that

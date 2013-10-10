@@ -10,7 +10,7 @@ CacheArea = inherit(DxElement)
 function CacheArea:constructor(posX, posY, width, height, containsGUIElements, cachingEnabled)
 	DxElement.constructor(self, posX, posY, width, height)
 
-	table.insert(GUIRenderer.cache, self)
+	GUIRenderer.addRef(self)
 	
 	self.m_TimeoutCounter = 0
 	self.m_ContainsGUIElements = containsGUIElements
@@ -22,6 +22,7 @@ function CacheArea:destructor()
 		destroyElement(self.m_RenderTarget)
 	end
 	DxElement.destructor(self)
+	GUIRenderer.removeRef(self)
 end
 
 function CacheArea:updateArea()
