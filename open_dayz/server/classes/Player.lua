@@ -41,12 +41,12 @@ end
 
 function Player:activate(bEnable)
 	bEnable = not bEnable
-	setElementFrozen(self,bEnable)
+	setElementFrozen(self, bEnable)
 	if bEnable then
-		setElementPosition(self,math.random(-8000,8000),math.random(-8000,8000),2000)
-		setElementAlpha(self,0)
+		setElementPosition(self, math.random(-8000, 8000), math.random(-8000, 8000), 2000)
+		setElementAlpha(self, 0)
 	else
-		setElementAlpha(self,255)
+		setElementAlpha(self, 255)
 	end
 end
 
