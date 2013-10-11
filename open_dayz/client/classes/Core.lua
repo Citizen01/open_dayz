@@ -62,6 +62,7 @@ end
 function Core:destructor()
 	delete(GUICursor:getSingleton())
 	delete(Speedometer:getSingleton())
+	delete(Nametags:getSingleton())
 	
 	-- Delete managers
 	delete(PlayerManager)
@@ -74,6 +75,7 @@ end
 
 function Core:onConfigRetrieve()
 	Weather:getSingleton():rebuild()
+	Nametags:new()
 end
 
 function Core:set(group, key, value)
