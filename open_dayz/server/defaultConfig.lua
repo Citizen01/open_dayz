@@ -39,7 +39,8 @@ local defaultConfig =
 	};
 	
 	client = {
-		weather = {}
+		weather = {};
+		nametagradius = 5;
 	};
 	
 	player = {
