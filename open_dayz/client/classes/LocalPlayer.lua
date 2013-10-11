@@ -43,7 +43,7 @@ end
 function LocalPlayer:onLogin()
 	HUDArea:getSingleton():show()
 	core:getForm("Login"):close()
-	MessageBox:new("Successfully logged in")
+	MessageBox:new(_"Successfully logged in")
 	showCursor(false)
 end
 
@@ -58,6 +58,10 @@ end
 
 function LocalPlayer:getLocale()
 	return self.m_Locale
+end
+
+function LocalPlayer:setLocale(locale)
+	self.m_Locale = locale
 end
 
 function LocalPlayer:getHunger()

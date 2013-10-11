@@ -234,4 +234,6 @@
 	<transferfile src="files/images/Speedometer/fuel.png" onDemand="false"/>
 	<transferfile src="files/images/Speedometer/fuel_needle.png" onDemand="false"/>
 	
+	<!-- clientside translations" -->
+	<transferfile src="files/translation/client.de.po"/>
 </meta>

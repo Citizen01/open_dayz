@@ -74,9 +74,9 @@ function Player:load()
 	
 	self.m_Admin 	= tonumber(row.Admin)
 	self.m_Locale	= row.Locale
-	self.m_Inventory = Inventory:new(row.Inventory)
-	self.m_Inventory:load()
-	self.m_Inventory:open(self)
+	--self.m_Inventory = Inventory:new(row.Inventory)
+	--self.m_Inventory:load()
+	--self.m_Inventory:open(self)
 	self.m_Kills	= tonumber(row.Kills)
 	self.m_Deaths	= tonumber(row.Deaths)
 	self.m_Blood = tonumber(row.Blood)
@@ -136,8 +136,8 @@ function Player:login(username, password)
 	
 	-- Success! report back and load
 	self.m_Id = row.Id
-	self:rpc(RPC_PLAYER_LOGIN, RPC_STATUS_SUCCESS)
 	self:load()
+	self:rpc(RPC_PLAYER_LOGIN, RPC_STATUS_SUCCESS, RPC_STATUS_SUCCESS, self.m_Locale)
 	
 	callEvent("onPlayerLoggedIn", self, username)
 end

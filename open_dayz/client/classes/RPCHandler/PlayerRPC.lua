@@ -39,7 +39,7 @@ function PlayerRPC.zombieCreate(zombie)
 	ZombieManager:getSingleton():addZombieByRef(zombie, "Zombie") -- Todo
 end
 
-function PlayerRPC.playerLogin(player, status, reason)
+function PlayerRPC.playerLogin(player, status, reason, locale)
 	if status == RPC_STATUS_ERROR then
 		if reason == RPC_STATUS_ALREADY_LOGGED_IN then
 			localPlayer:sendMessage(_"Login failed. You're already logged in!", 255, 0, 0)
@@ -49,6 +49,7 @@ function PlayerRPC.playerLogin(player, status, reason)
 			return
 		end
 	elseif status == RPC_STATUS_SUCCESS then
+		localPlayer:setLocale(locale)
 		localPlayer:sendMessage(_"Sucessfully logged in!")
 		localPlayer:onLogin()
 	end

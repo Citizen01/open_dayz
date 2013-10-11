@@ -8,5 +8,5 @@
 PlayerManager = inherit(Singleton)
 
 function PlayerManager:constructor()
-	enew(localPlayer, LocalPlayer)
+	
 end

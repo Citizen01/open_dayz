@@ -12,6 +12,9 @@ SERVER = triggerServerEvent == nil
 function TranslationManager:constructor()
 	self.m_Translations = {}
 	self.m_AddonTranslations = {}
+	
+	-- Load standard translations
+	self:loadTranslation("de")
 end
 
 function TranslationManager:loadTranslation(locale, poFile)
