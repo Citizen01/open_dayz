@@ -31,10 +31,23 @@ function Player:constructor()
 	status.Infected = false
 	status.Unconscious = false
 	status.Cold = false
+	
+	self:activate(false)
 end
 
 function Player:destructor()
 	self:save()
+end
+
+function Player:activate(bEnable)
+	bEnable = not bEnable
+	setElementFrozen(self,bEnable)
+	if bEnable then
+		setElementPosition(self,math.random(-8000,8000),math.random(-8000,8000),2000)
+		setElementAlpha(self,0)
+	else
+		setElementAlpha(self,255)
+	end
 end
 
 function Player:save()
@@ -133,7 +146,7 @@ function Player:login(username, password)
 		self:rpc(RPC_PLAYER_LOGIN, RPC_STATUS_ERROR, RPC_STATUS_INVALID_PASSWORD)
 		return
 	end
-	
+	self:activate(true)
 	-- Success! report back and load
 	self.m_Id = row.Id
 	self:load()
