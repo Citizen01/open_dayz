@@ -149,7 +149,11 @@
 		<script src="client/classes/GUI/GUIVerticalScrollbar.lua" type="client"/>
 		
 		<!-- Special GUI elements -->
-		<script src="client/classes/GUI/MessageBox.lua" type="client"/>
+		<script src="client/classes/GUI/MessageBoxs/MessageBox.lua" type="client"/>
+		<script src="client/classes/GUI/MessageBoxs/InfoBox.lua" type="client"/>
+		<script src="client/classes/GUI/MessageBoxs/WarningBox.lua" type="client"/>
+		<script src="client/classes/GUI/MessageBoxs/ErrorBox.lua" type="client"/>
+		<script src="client/classes/GUI/MessageBoxs/SuccessBox.lua" type="client"/>
 		<script src="client/classes/GUIForms/MouseMenu/PlayerMouseMenu.lua" type="client"/>
 		<script src="client/classes/GUIForms/MouseMenu/VehicleMouseMenu.lua" type="client"/>
 		
@@ -215,7 +219,10 @@
 	
 	<transferfile src="files/audio/Message.mp3" onDemand="false"/>
 	
-	<transferfile src="files/images/Info.png" onDemand="false"/>
+	<transferfile src="files/images/MessageBoxs/Info.png" onDemand="false"/>
+	<transferfile src="files/images/MessageBoxs/Warning.png" onDemand="false"/>
+	<transferfile src="files/images/MessageBoxs/Error.png" onDemand="false"/>
+	<transferfile src="files/images/MessageBoxs/Success.png" onDemand="false"/>
 	
 	<transferfile src="files/images/GUI/Button.png" onDemand="false"/>
 	<transferfile src="files/images/GUI/Button_hover.png" onDemand="false"/>
