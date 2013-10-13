@@ -16,6 +16,11 @@ function MessageBox:constructor(text, timeout)
 	playSound(self:getSoundPath())
 end
 
+function MessageBox:derived_constructor(text, timeout)
+	-- @sbx320: Why are we using rawget(class, "contructor") @ classlib:55
+	MessageBox.constructor(self, text, timeout)
+end
+
 function MessageBox:drawThis()
 	-- Draw background
 	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, tocolor(0, 0, 0, 200))
