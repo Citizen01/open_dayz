@@ -13,6 +13,8 @@ function HUDArea:constructor()
 
 	self.m_Hunger = HUDHunger:new(0, 0, 100, 100, self)
 	self.m_Thirst = HUDThirst:new(0, 150, 100, 100, self)
+	self.m_Radar = HUDRadar:new()
+	
 	self:hide()
 end
 
@@ -22,4 +24,16 @@ end
 
 function HUDArea:hide()
 	self:setVisible(false)
+end
+
+function HUDArea:getHunger()
+	return self.m_Hunger
+end
+
+function HUDArea:getThirst()
+	return self.m_Thirst
+end
+
+function HUDArea:getRadar()
+	return self.m_Radar
 end

@@ -173,6 +173,7 @@
 		<script src="client/classes/HUD/HUDArea.lua" type="client"/>
 		<script src="client/classes/HUD/HUDHunger.lua" type="client"/>
 		<script src="client/classes/HUD/HUDThirst.lua" type="client"/>
+		<script src="client/classes/HUD/HUDRadar.lua" type="client"/>
 		
 		<!-- Shaders -->
 		<script src="client/classes/Shader.lua" type="client"/>
@@ -234,6 +235,7 @@
 	
 	<transferfile src="files/images/HUD/Hunger.png" onDemand="false"/>
 	<transferfile src="files/images/HUD/Thirst.png" onDemand="false"/>
+	<transferfile src="files/images/HUD/Radar.jpg" onDemand="false"/>
 
 	<transferfile src="files/images/Speedometer/main.png" onDemand="false"/>
 	<transferfile src="files/images/Speedometer/main_needle.png" onDemand="false"/>

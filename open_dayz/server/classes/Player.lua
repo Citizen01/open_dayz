@@ -181,6 +181,7 @@ function Player:register(username, password, salt)
 	self.m_Id = sql:lastInsertId()
 	self:rpc(RPC_PLAYER_REGISTER, RPC_STATUS_SUCCESS)
 	
+	self:activate(true)
 	-- Load default data
 	self:loadDefault()
 	
