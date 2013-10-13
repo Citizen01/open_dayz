@@ -56,7 +56,7 @@ function FormLogin:ButtonLogin_Click()
 	if self.m_EditUsername:getText() ~= "" and self.m_EditPassword:getText() ~= "" then
 		localPlayer:login(self.m_EditUsername:getText(), self.m_EditPassword:getText(), self.m_CheckLogin:isChecked(), self.m_PasswordAlreadyHashed)
 	else
-		MessageBox:new("Please insert a valid username and password")
+		WarningBox:new("Please insert a valid username and password")
 	end
 end
 

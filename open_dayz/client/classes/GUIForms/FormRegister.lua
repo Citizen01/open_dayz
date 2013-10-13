@@ -46,9 +46,9 @@ function FormRegister:ButtonRegister_Click()
 			localPlayer:register(self.m_EditUsername:getText(), self.m_EditPassword1:getText())
 			delete(self)
 		else
-			MessageBox:new("The entered passwords do not match. Please try again!")
+			WarningBox:new("The entered passwords do not match. Please try again!")
 		end
 	else
-		MessageBox:new("Please fill in all fields")
+		WarningBox:new("Please fill in all fields")
 	end
 end
