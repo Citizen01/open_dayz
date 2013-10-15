@@ -1,0 +1,14 @@
+# Open MTA:DayZ Translation File
+# Licensed under the GPLv3
+# https://github.com/OpenMTADayZ/open_dayz
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-15 22:29+0000\n"
+"PO-Revision-Date: 2013-10-15 22:29+0000\n"
+"Last-Translator: none <none@no.mail>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
