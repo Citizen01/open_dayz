@@ -209,6 +209,22 @@ function Player:sendMessage(text, r, g, b, ...)
 	outputChatBox(text:format(...), self, r, g, b, true)
 end
 
+function Player:sendError(text, ...)
+	self:rpc(RPC_PLAYER_MESSAGE, RPC_STATUS_MESSAGE_ERROR, text:format(...))
+end
+
+function Player:sendWarning(text, ...)
+	self:rpc(RPC_PLAYER_MESSAGE, RPC_STATUS_MESSAGE_WARNING, text:format(...))
+end
+
+function Player:sendInfo(text, ...)
+	self:rpc(RPC_PLAYER_MESSAGE, RPC_STATUS_MESSAGE_INFO, text:format(...))
+end
+
+function Player:sendSuccess(text, ...)
+	self:rpc(RPC_PLAYER_MESSAGE, RPC_STATUS_MESSAGE_SUCCESS, text:format(...))
+end
+
 function Player:respawn()
 	-- Get a random position
 	local posX, posY, posZ = Map:getSingleton():getSpawnpoint()

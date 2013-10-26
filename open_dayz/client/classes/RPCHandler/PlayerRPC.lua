@@ -14,6 +14,7 @@ function PlayerRPC:constructor()
 
 	self:register(RPC_PLAYER_LOGIN, PlayerRPC.playerLogin)
 	self:register(RPC_PLAYER_REGISTER, PlayerRPC.playerRegister)
+	self:register(RPC_PLAYER_MESSAGE, PlayerRPC.playerMessage)
 	
 	self:register(RPC_TRANSFER_REQUEST_FILELIST, PlayerRPC.transferRequestFilelist)
 	self:register(RPC_TRANSFER_REQUEST_FILES, PlayerRPC.transferRequestFiles)
@@ -67,6 +68,18 @@ function PlayerRPC.playerRegister(player, status, reason)
 	elseif status == RPC_STATUS_SUCCESS then
 		localPlayer:sendMessage(_"Sucessfully registered!")
 		localPlayer:onLogin()
+	end
+end
+
+function PlayerRPC.playerMessage(player, messageType, text, timeout)
+	if messageType == RPC_STATUS_MESSAGE_INFO then
+		InfoBox:new(text, timeout)
+	elseif messageType == RPC_STATUS_MESSAGE_WARNING then
+		WarningBox:new(text, timeout)
+	elseif messageType == RPC_STATUS_MESSAGE_ERROR then
+		ErrorBox:new(text, timeout)
+	elseif messageType == RPC_STATUS_MESSAGE_SUCCESS then
+		SuccessBox:new(text, timeout)
 	end
 end
 

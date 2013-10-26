@@ -210,6 +210,7 @@
 	
 	<!-- Maps -->
 	<map src="files/maps/spawnpoints.map"/>
+	<map src="files/maps/vehicles.map"/>
 	
 	<!-- Files -->
 	<transferfile src="LICENSE" onDemand="false"/>

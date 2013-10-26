@@ -21,9 +21,9 @@ end
 
 function Vehicle:onStartEnter(player, seat, jacked, door)
 	-- Todo: Use a bind instead
-	--[[if not self:startEngine() then
+	if not self:startEngine() then
 		player:sendMessage(_("The engine could not be started due to broken or missing components. Please find and collect them first!", player), 255, 0, 0)
-	end]]--
+	end
 	
 end
 
@@ -62,4 +62,12 @@ function Vehicle:addComponent(component)
 	if index then table.remove(self.m_MissingComponents, index) end
 	
 	self:rpc(RPC_VEHICLE_ADD_COMPONENT, component)
+end
+
+function Vehicle:generateMissingComponents()
+	for component, componentName in enumFields("vehiclecomponent") do
+		if math.random(1, 3) == 1 then
+			self:removeComponent(component)
+		end
+	end
 end

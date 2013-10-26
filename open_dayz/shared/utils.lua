@@ -26,6 +26,19 @@ function getEnums()
 	return __enums
 end
 
+function enumFields(name)
+	local i = 0
+	local maxNum = __enums[name].maxNum
+	return (
+		function()
+			i = i + 1
+			if i ~= maxNum then
+				return i, __enums[name][i]
+			end
+		end
+	)
+end
+
 function table.size(tab)
 	local i = 0
 	for _ in pairs(tab) do

@@ -1,0 +1,5 @@
+<map edf:definitions="editor_main,open_dayz">
+    <vehicle id="vehicle (Patriot) (1)" paintjob="3" interior="0" alpha="255" model="470" plate="NMW3 CNZ" dimension="0" posX="-2448.3999" posY="2233.69995" posZ="5" rotX="0" rotY="0" rotZ="36" color="95,10,21,0,0,0,0,0,0,0,0,0"></vehicle>
+    <vehicle id="vehicle (Patriot) (2)" paintjob="3" interior="0" alpha="255" model="470" plate="4KFI ISL" dimension="0" posX="-2469.1001" posY="2228" posZ="5" rotX="0" rotY="0" rotZ="275.997" color="95,10,21,0,0,0,0,0,0,0,0,0"></vehicle>
+    <vehicle id="vehicle (Patriot) (3)" paintjob="3" interior="0" alpha="255" model="470" plate="54XY SHY" dimension="0" posX="-2475.80005" posY="2242" posZ="5" rotX="0" rotY="0" rotZ="125.993" color="95,10,21,0,0,0,0,0,0,0,0,0"></vehicle>
+</map>

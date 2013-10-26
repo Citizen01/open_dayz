@@ -12,10 +12,11 @@ RPCs = {
 	enum("RPC_NPC_CREATE", "rpc");
 	enum("RPC_ZOMBIE_CREATE", "rpc");
 	
-	-- Register / Login
+	-- Player RPCs
 	enum("RPC_PLAYER_LOGIN", "rpc");
 	enum("RPC_PLAYER_REGISTER", "rpc");
 	enum("RPC_PLAYER_NECESSITIES_SYNC", "rpc");
+	enum("RPC_PLAYER_MESSAGE", "rpc");
 	
 	-- Inventory RPCs
 	enum("RPC_INVENTORY_SYNC", "rpc");
@@ -56,6 +57,12 @@ RPCStatus = {
 	enum("RPC_STATUS_INVALID_USERNAME", "rpcstatus");
 	enum("RPC_STATUS_INVALID_PASSWORD", "rpcstatus");
 	enum("RPC_STATUS_DUPLICATE_USER", "rpcstatus");
+	
+	-- Message types
+	enum("RPC_STATUS_MESSAGE_INFO", "rpcstatus");
+	enum("RPC_STATUS_MESSAGE_WARNING", "rpcstatus");
+	enum("RPC_STATUS_MESSAGE_ERROR", "rpcstatus");
+	enum("RPC_STATUS_MESSAGE_SUCCESS", "rpcstatus");
 }
 
 RPCNames = getEnums().rpc
