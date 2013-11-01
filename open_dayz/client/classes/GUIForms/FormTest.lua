@@ -18,8 +18,9 @@ function FormTest:constructor()
 	self.m_Grid:addColumn("Column 1", 0.3)
 	self.m_Grid:addColumn("Column 2", 0.3)
 	self.m_Grid:addColumn("Column 3", 0.3)
-	for i=0, 100 do
-		self.m_Grid:addItem("Value 1", "Value 2", "Value 3")
+	for i=0, 10 do
+		local item = self.m_Grid:addItem("Value 1, Row: "..i, "Value 2", "Value 3")
+		item.onLeftClick = function() outputChatBox(i) end
 	end
 	
 	--[[local mouseMenu = GUIMouseMenu:new(200, 150, 300, 300, self)

@@ -13,7 +13,7 @@ function HUDArea:constructor()
 
 	self.m_Hunger = HUDHunger:new(0, 0, 100, 100, self)
 	self.m_Thirst = HUDThirst:new(0, 150, 100, 100, self)
-	self.m_Radar = HUDRadar:new()
+	--self.m_Radar = HUDRadar:new()
 	
 	self:hide()
 end
