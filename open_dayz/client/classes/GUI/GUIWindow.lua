@@ -76,6 +76,6 @@ function GUIWindow:close()
 end
 
 -- Toggles the visibility of the logo
-function GUIWindow:LogoVisible(showLogo)
+function GUIWindow:setLogoVisible(showLogo)
 	self.m_Logo = showLogo
 end
