@@ -66,29 +66,10 @@ function Vehicle:openComponentsGUI()
 	FormVehicleComponents:new(self)
 end
 
-function Vehicle:removeComponent(component)
-	setVehicleComponentVisible(self, Vehicle.VehicleComponents[component], false)
+function Vehicle:removeComponent(ecomponent)
+	setVehicleComponentVisible(self, VehicleManager.enumToComponent(ecomponent), false)
 end
 
-function Vehicle:addComponent(component)
-	setVehicleComponentVisible(self, Vehicle.VehicleComponents[component], true)
+function Vehicle:addComponent(ecomponent)
+	setVehicleComponentVisible(self, VehicleManager.enumToComponent(ecomponent), true)
 end
-
-
-Vehicle.VehicleComponents = {
-	[VEHICLE_COMPONENT_DOOR_LF] = "door_lf_dummy";
-	[VEHICLE_COMPONENT_DOOR_RF] = "door_rf_dummy";
-	[VEHICLE_COMPONENT_DOOR_LR] = "door_lr_dummy";
-	[VEHICLE_COMPONENT_DOOR_RR] = "door_rr_dummy";
-	[VEHICLE_COMPONENT_EXHAUST] = "exhaust_ok";
-	[VEHICLE_COMPONENT_BUMP_FRONT] = "bump_front_dummy";
-	[VEHICLE_COMPONENT_BUMP_REAR] = "bump_rear_dummy";
-	[VEHICLE_COMPONENT_BONNET] = "bonnet_dummy";
-	[VEHICLE_COMPONENT_BOOT] = "boot_dummy";
-	[VEHICLE_COMPONENT_CHASSIS] = "chassis_dummy";
-	[VEHICLE_COMPONENT_WINDSCREEN] = "windscreen_dummy";
-	[VEHICLE_COMPONENT_WHEEL_LF] = "wheel_lf_dummy";
-	[VEHICLE_COMPONENT_WHEEL_RF] = "wheel_rf_dummy";
-	[VEHICLE_COMPONENT_WHEEL_LB] = "wheel_lb_dummy";
-	[VEHICLE_COMPONENT_WHEEL_RB] = "wheel_rb_dummy";
-}

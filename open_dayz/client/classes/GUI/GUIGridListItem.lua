@@ -20,6 +20,10 @@ function GUIGridListItem:setColumnText(columnIndex, value)
 	self:anyChange()
 end
 
+function GUIGridListItem:getColumnText(columnIndex)
+	return self.m_Columns[columnIndex]
+end
+
 function GUIGridListItem:drawThis()
 	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, self.m_Color)
 

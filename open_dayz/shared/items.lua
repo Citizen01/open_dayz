@@ -52,6 +52,23 @@ RADAR		= { 31, "Radar",		1,				0,			ITEM_SLOT_TOOLBELT,			ItemRadar },
 BURGER		= { 40, "Burger",		1,				0,			ITEM_SLOT_MAIN,				ItemFood },
 PIZZA		= { 41, "Pizza",		1,				0,			ITEM_SLOT_MAIN,				ItemFood },
 
+-- Vehicle components (UID 60-80)
+VehicleDoorLF = { 60, "Vehicle door LF", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleDoorRF = { 61, "Vehicle door RF", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleDoorLR = { 62, "Vehicle door LR", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleDoorRR = { 63, "Vehicle door RR", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleExhaust= { 64, "Vehicle exhaust", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleBumpFront = { 65, "Vehicle bump front", 1,	0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleBumpRear = { 66, "Vehicle bump rear", 1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleBonnet = { 67, "Vehicle bonnet", 1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleBoot = { 68, "Vehicle boot", 	1,			0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleChassis = { 69, "Vehicle chassis", 	1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleWindscreen = { 70, "Vehicle windscreen", 1,	0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleWheelLF = { 71, "Vehicle wheel LF", 1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleWheelRF = { 72, "Vehicle wheel RF", 1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleWheelLB = { 73, "Vehicle wheel LB", 1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+VehicleWheelRB = { 74, "Vehicle wheel RB", 1,		0,			ITEM_SLOT_MAIN,				ItemVehicleComponent },
+
 -- Add more below
 }
 

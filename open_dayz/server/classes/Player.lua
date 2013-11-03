@@ -232,6 +232,10 @@ function Player:sendSuccess(text, ...)
 	self:rpc(RPC_PLAYER_MESSAGE, RPC_STATUS_MESSAGE_SUCCESS, text:format(...))
 end
 
+function Player:getInventory()
+	return self.m_Inventory
+end
+
 function Player:respawn()
 	-- Get a random position
 	local posX, posY, posZ = Map:getSingleton():getSpawnpoint()

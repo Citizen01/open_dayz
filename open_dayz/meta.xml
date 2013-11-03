@@ -192,6 +192,7 @@
 		<script src="client/manager/NPCManager.lua" type="client"/>
 		<script src="client/manager/ModManager.lua" type="client"/>
 		<script src="client/manager/ShaderManager.lua" type="client"/>
+		<script src="client/manager/VehicleManager.lua" type="client"/>
 
 		<!-- Entry script -->
 		<script src="client/main.lua" type="client"/>

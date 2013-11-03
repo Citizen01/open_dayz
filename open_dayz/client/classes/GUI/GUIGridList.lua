@@ -12,6 +12,7 @@ function GUIGridList:constructor(posX, posY, width, height, parent)
 	
 	self.m_Columns = {}
 	self.m_ScrollArea = GUIScrollableArea:new(0, 6, self.m_Width, self.m_Height - 40, self.m_Width, 1, true, false, self)
+	self.m_SelectedItem = nil
 end
 
 function GUIGridList:addItem(...)
@@ -51,7 +52,13 @@ function GUIGridList:addColumn(text, width)
 	table.insert(self.m_Columns, {text = text, width = width})
 end
 
+function GUIGridList:getSelectedItem()
+	return self.m_SelectedItem
+end
+
 function GUIGridList:onInternalSelectItem(item)
+	self.m_SelectedItem = item
+
 	for k, v in ipairs(self:getItems()) do
 		v.m_Color = tocolor(0, 0, 0, 0)
 	end

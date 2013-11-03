@@ -18,6 +18,7 @@ RPCs = {
 	enum("RPC_PLAYER_REGISTER", "rpc");
 	enum("RPC_PLAYER_NECESSITIES_SYNC", "rpc");
 	enum("RPC_PLAYER_MESSAGE", "rpc");
+	enum("RPC_PLAYER_VEHICLE_COMPONENT_REQUEST", "rpc");
 	
 	-- Inventory RPCs
 	enum("RPC_INVENTORY_SYNC", "rpc");

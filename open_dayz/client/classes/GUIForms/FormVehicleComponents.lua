@@ -10,6 +10,7 @@ FormVehicleComponents = inherit(GUIForm)
 function FormVehicleComponents:constructor(vehicle)
 	-- Call base class constructor
 	GUIForm.constructor(self, screenWidth/2 - 370/2, screenHeight/2 - 450/2, 370, 450)
+	self.m_Vehicle = vehicle
 
 	-- Create GUI elements
 	self.m_Window         = GUIWindow:new(0, 0, self.m_Width, self.m_Height, _"Vehicle components", true, true, self)
@@ -24,7 +25,7 @@ function FormVehicleComponents:constructor(vehicle)
 	
 	-- Add gridlist items
 	for component, visible in pairs(getVehicleComponents(vehicle)) do
-		self.m_GridComponents:addItem(component, visible and "Yes" or "No")
+		self.m_GridComponents:addItem(component, visible and "Yes" or "No") -- todo: Use friendly names
 	end
 
 	-- Add events
@@ -35,8 +36,15 @@ function FormVehicleComponents:constructor(vehicle)
 end
 
 function FormVehicleComponents:ButtonAdd_Click()
-	-- Todo
-	
+	local item = self.m_GridComponents:getSelectedItem()
+	if item then
+		local e = VehicleManager.componentToEnum(item:getColumnText(1))
+		if e and self.m_Vehicle then
+			localPlayer:rpc(RPC_PLAYER_VEHICLE_COMPONENT_REQUEST, self.m_Vehicle, e)
+		end
+	else
+		ErrorBox:new(_"Please select an item")
+	end
 end
 
 function FormVehicleComponents:ButtonCancel_Click()

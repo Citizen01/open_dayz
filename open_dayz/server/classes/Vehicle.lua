@@ -48,7 +48,7 @@ function Vehicle:setFuel(fuel)
 end
 
 function Vehicle:startEngine()
-	-- In case of any component is broken or missing, don't start
+	-- In case of any broken or missing component, don't start
 	if #self.m_MissingComponents > 0 then
 		return false
 	end
@@ -66,9 +66,14 @@ end
 
 function Vehicle:addComponent(component)
 	local index = table.find(self.m_MissingComponents, component)
-	if index then table.remove(self.m_MissingComponents, index) end
+	if index then
+		table.remove(self.m_MissingComponents, index)
+	else
+		return false
+	end
 	
 	self:rpc(RPC_VEHICLE_ADD_COMPONENT, component)
+	return true
 end
 
 function Vehicle:generateMissingComponents()

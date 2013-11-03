@@ -17,6 +17,12 @@ function PlayerRPC:constructor()
 	self:register(RPC_INVENTORY_SYNC, PlayerRPC.inventorySync)
 	self:register(RPC_INVENTORY_OPEN, PlayerRPC.inventoryOpen)
 	self:register(RPC_INVENTORY_CLOSE, PlayerRPC.inventoryClose)
+	self:register(RPC_PLAYER_VEHICLE_COMPONENT_REQUEST, PlayerRPC.vehicleComponentRequest)
+end
+
+function PlayerRPC.toElement(element)
+	-- Our first parameter is an element, so we are able to return it directly
+	return element
 end
 
 function PlayerRPC.playerReady(player, client)
@@ -59,7 +65,14 @@ function PlayerRPC.inventoryClose(player, client, id)
 	client:rpc(RPC_INVENTORY_CLOSE, id)
 end
 
-function PlayerRPC.toElement(element)
-	-- Our first parameter is an element, so we are able to return it directly
-	return element
+function PlayerRPC.vehicleComponentRequest(player, client, vehicle, component)
+	local itemId = component + 59 -- Todo: Replace this hacky line as soon as the friendly names are done
+	local itemSlot = client:getInventory():findItem(itemid)
+	if itemSlot then
+		if vehicle:addComponent(component) then
+			client:getInventory():removeItem(itemSlot, 1)
+		end
+	else
+		client:sendError(_("You do not own this item", client))
+	end
 end
