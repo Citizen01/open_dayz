@@ -183,6 +183,7 @@
 		<script src="client/classes/GUIForms/FormTest.lua" type="client"/>
 		<script src="client/classes/GUIForms/FormLogin.lua" type="client"/>
 		<script src="client/classes/GUIForms/FormRegister.lua" type="client"/>
+		<script src="client/classes/GUIForms/FormVehicleComponents.lua" type="client"/>
 		
 		
 		<!-- Manager -->

@@ -31,6 +31,10 @@ function GUIGridList:removeItem(columnIndex)
 	self:anyChange()
 end
 
+function GUIGridList:getItems()
+	return self.m_ScrollArea.m_Children
+end
+
 function GUIGridList:getColumnWidth(columnIndex)
 	return self.m_Columns[columnIndex].width
 end
@@ -45,10 +49,6 @@ end
 
 function GUIGridList:addColumn(text, width)
 	table.insert(self.m_Columns, {text = text, width = width})
-end
-
-function GUIGridList:getItems()
-	return self.m_ScrollArea.m_Children
 end
 
 function GUIGridList:onInternalSelectItem(item)
@@ -72,7 +72,13 @@ function GUIGridList:draw() -- Swap render order
 end
 
 function GUIGridList:drawThis()
+	-- Draw background
+	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, tocolor(255, 255, 0, 50))
+	
+	-- Draw header line
 	dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, 20, Color.Red)
+	
+	-- Draw column header
 	local currentXPos = 0
 	for k, column in ipairs(self.m_Columns) do
 		dxDrawText(column.text, self.m_AbsoluteX + currentXPos, self.m_AbsoluteY + 2, self.m_AbsoluteX + currentXPos + column.width*self.m_Width, self.m_AbsoluteY + 10, Color.White, 1)

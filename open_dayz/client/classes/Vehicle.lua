@@ -62,6 +62,10 @@ function Vehicle:Event_vehicleExit(player, seat)
 	end
 end
 
+function Vehicle:openComponentsGUI()
+	FormVehicleComponents:new(self)
+end
+
 function Vehicle:removeComponent(component)
 	setVehicleComponentVisible(self, Vehicle.VehicleComponents[component], false)
 end
