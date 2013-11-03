@@ -13,6 +13,7 @@ RPCs = {
 	enum("RPC_ZOMBIE_CREATE", "rpc");
 	
 	-- Player RPCs
+	enum("RPC_PLAYER_READY", "rpc");
 	enum("RPC_PLAYER_LOGIN", "rpc");
 	enum("RPC_PLAYER_REGISTER", "rpc");
 	enum("RPC_PLAYER_NECESSITIES_SYNC", "rpc");
@@ -43,7 +44,7 @@ RPCs = {
 	enum("RPC_VEHICLE_ENTER_SYNC", "rpc");
 	enum("RPC_VEHICLE_EXIT_SYNC", "rpc");
 	enum("RPC_VEHICLE_SET_FUEL", "rpc");
-	enum("RPC_VEHICLE_REMOVE_COMPONENT", "rpc");
+	enum("RPC_VEHICLE_REMOVE_COMPONENTS", "rpc");
 	enum("RPC_VEHICLE_ADD_COMPONENT", "rpc");
 }
 

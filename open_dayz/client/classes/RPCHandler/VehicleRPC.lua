@@ -11,7 +11,7 @@ function VehicleRPC:constructor()
 	self:register(RPC_VEHICLE_STARTENGINE, VehicleRPC.startEngine)
 	self:register(RPC_VEHICLE_ENTER_SYNC, VehicleRPC.vehicleEnterSync)
 	self:register(RPC_VEHICLE_SET_FUEL, VehicleRPC.vehicleSetFuel)
-	self:register(RPC_VEHICLE_REMOVE_COMPONENT, VehicleRPC.vehicleRemoveComponent)
+	self:register(RPC_VEHICLE_REMOVE_COMPONENTS, VehicleRPC.vehicleRemoveComponents)
 	self:register(RPC_VEHICLE_ADD_COMPONENT, VehicleRPC.vehicleAddComponent)
 end
 
@@ -32,8 +32,10 @@ function VehicleRPC.vehicleSetFuel(vehicle, fuel)
 	
 end
 
-function VehicleRPC.vehicleRemoveComponent(vehicle, component)
-	vehicle:removeComponent(component)
+function VehicleRPC.vehicleRemoveComponents(vehicle, components)
+	for k, v in ipairs(components) do
+		vehicle:removeComponent(v)
+	end
 end
 
 function VehicleRPC.vehicleAddComponent(vehicle, component)

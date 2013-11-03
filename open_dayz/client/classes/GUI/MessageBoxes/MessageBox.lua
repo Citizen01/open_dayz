@@ -11,13 +11,13 @@ inherit(GUIFontContainer, MessageBox)
 function MessageBox:constructor(text, timeout)
 	DxElement.constructor(self, screenWidth - 380, screenHeight - 160, 360, 140)
 	GUIFontContainer.constructor(self, text, 1.4, "default")
+	
 	timeout = timeout and timeout >= 50 and timeout or 3000
 	setTimer(function() delete(self) end, timeout, 1)
 	playSound(self:getSoundPath())
 end
 
 function MessageBox:derived_constructor(text, timeout)
-	-- @sbx320: Why are we using rawget(class, "contructor") @ classlib:55
 	MessageBox.constructor(self, text, timeout)
 end
 

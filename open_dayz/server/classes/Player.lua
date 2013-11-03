@@ -197,6 +197,13 @@ function Player:rpc(rpc, ...)
 	triggerClientEvent(self, "onRPC", resourceRoot, rpc, self, ...)
 end
 
+function Player:sendInitialSyncs()
+	-- Send vehicle initial sync
+	for k, vehicle in ipairs(getElementsByType("vehicle")) do
+		vehicle:sendInitialSync()
+	end
+end
+
 function Player:getLocale()
 	return self.m_Locale
 end

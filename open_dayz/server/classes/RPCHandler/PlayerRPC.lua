@@ -8,6 +8,7 @@
 PlayerRPC = inherit(RPC)
 
 function PlayerRPC:constructor()
+	self:register(RPC_PLAYER_READY, PlayerRPC.playerReady)
 	self:register(RPC_PLAYER_LOGIN, PlayerRPC.playerLogin)
 	self:register(RPC_PLAYER_REGISTER, PlayerRPC.playerRegister)
 	self:register(RPC_SERVER_GET_FULL_CONFIG, PlayerRPC.playerGetFullConfig)
@@ -16,6 +17,11 @@ function PlayerRPC:constructor()
 	self:register(RPC_INVENTORY_SYNC, PlayerRPC.inventorySync)
 	self:register(RPC_INVENTORY_OPEN, PlayerRPC.inventoryOpen)
 	self:register(RPC_INVENTORY_CLOSE, PlayerRPC.inventoryClose)
+end
+
+function PlayerRPC.playerReady(player, client)
+	-- Send initial syncs to this player
+	client:sendInitialSyncs()
 end
 
 function PlayerRPC.playerLogin(player, client, username, password)

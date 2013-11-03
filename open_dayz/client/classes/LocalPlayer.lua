@@ -8,6 +8,9 @@
 LocalPlayer = inherit(Player)
 
 function LocalPlayer:constructor()
+	-- Tell the server that we're ready
+	self:rpc(RPC_PLAYER_READY)
+
 	self.m_Hunger = 100
 	self.m_Thirst = 100
 	self.m_Locale = "en"

@@ -19,6 +19,13 @@ function Vehicle:destructor()
 	
 end
 
+function Vehicle:sendInitialSync(player)
+	-- Send missing vehicle component list
+	if #self.m_MissingComponents > 0 then
+		self:rpc(RPC_VEHICLE_REMOVE_COMPONENTS, self.m_MissingComponents)
+	end
+end
+
 function Vehicle:onStartEnter(player, seat, jacked, door)
 	-- Todo: Use a bind instead
 	if not self:startEngine() then
@@ -54,7 +61,7 @@ end
 function Vehicle:removeComponent(component)
 	table.insert(self.m_MissingComponents, component)
 	
-	self:rpc(RPC_VEHICLE_REMOVE_COMPONENT, component)
+	self:rpc(RPC_VEHICLE_REMOVE_COMPONENTS, {component})
 end
 
 function Vehicle:addComponent(component)
