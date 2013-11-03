@@ -46,8 +46,8 @@ function GUIWindow:drawThis()
 	--dxDrawRectangle(self.m_AbsoluteX, self.m_AbsoluteY, self.m_Width, self.m_Height, tocolor(0, 0, 0, self.m_Alpha))
 
 	-- Draw logo
-	if false then -- Should the logo be optional? | Todo: Since we haven't got a logo, disable that
-		dxDrawImage(self.m_AbsoluteX + 10, self.m_AbsoluteY + self.m_Height - 29 - 10, 62, 29, "files/images/GUI/logo.png")
+	if self.m_Logo then -- Since we haven't got a logo, disable that
+		--dxDrawImage(self.m_AbsoluteX + 10, self.m_AbsoluteY + self.m_Height - 29 - 10, 62, 29, "files/images/GUI/logo.png")
 	end
 
 	if self.m_HasTitlebar then
@@ -73,4 +73,9 @@ function GUIWindow:close()
 	else
 		delete(self)
 	end
+end
+
+-- Toggles the visibility of the logo
+function GUIWindow:setLogoVisible(showLogo)
+	self.m_Logo = showLogo
 end
