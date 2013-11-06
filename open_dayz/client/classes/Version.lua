@@ -1,7 +1,7 @@
 -- ****************************************************************************
 -- *
 -- *  PROJECT:     Open MTA:DayZ
--- *  FILE:        server/classes/Version.lua
+-- *  FILE:        client/classes/Version.lua
 -- *  PURPOSE:     Version information class
 -- *
 -- ****************************************************************************

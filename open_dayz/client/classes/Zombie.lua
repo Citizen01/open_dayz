@@ -51,7 +51,13 @@ enum("ZOMBIE_STATUS_SEARCHING", "zombiestatus") -- Lost the target (Going to the
 
 
 function Zombie:constructor()
-	self.m_LastSeen = Vector(0,0,0)
+	NPC.constructor(self)
+
+	self.m_LastSeen = Vector(0, 0, 0)
+end
+
+function Zombie.getNPCType()
+	return 1
 end
 
 function Zombie:update()		
@@ -108,16 +114,17 @@ function Zombie:isTargetInAttackRange(target)
 	return self.m_DistanceToTarget <= 2.0
 end
 	
---ToDo: Check sound
+-- Todo: Check sound
 function Zombie:isTargetInFollowRange(target)
 	if not target then
 		target = self.m_CurrentTarget
 		if not self.m_CurrentTarget then return false end
 	end
-	local x,y,z = getPedBonePosition(self, 7)--head
-	local tx,ty,tz = getPedBonePosition(target, 7)-- Head
-	local hit ,_,_,_, hitElement = processLineOfSight(x,y,z, tx,ty,tz, true, true, false)-- Visibility check
+	local x, y, z = getPedBonePosition(self, 7) -- Head
+	local tx, ty, tz = getPedBonePosition(target, 7) -- Head
+	local hit ,_,_,_, hitElement = processLineOfSight(x,y,z, tx,ty,tz, true, true, false) -- Visibility check
 	local inRange = false
+	
 	-- Check: Can we see our target?
 	if not hit then		
 		local moveState = getPedMoveState(target)
@@ -180,12 +187,11 @@ function Zombie:walkAround()
 end
 
 function Zombie:findTarget()
-	local players = getElementsByType("player")
 	local closestPlayer = false
 	local dist = 9999
 	
 	-- Loop through all players
-	for _, thePlayer in ipairs(players) do
+	for _, thePlayer in ipairs(getElementsByType("player")) do
 		-- Set current player as target
 		self:setTarget(thePlayer)
 		-- Check: Is the target in range?

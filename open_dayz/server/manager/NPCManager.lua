@@ -9,6 +9,10 @@ NPCManager = inherit(Singleton)
 
 function NPCManager:constructor()
 	self.m_NPCs = {}
+	self.m_NPCTypes = {}
+	
+	-- Register npc types
+	self:registerNPCType(Zombie)
 	
 	addEventHandler("onElementStartSync", root, 
 		function(player)
@@ -25,4 +29,8 @@ function NPCManager:addRef(npc)
 	table.insert(self.m_NPCs, npc)
 	-- Return insert position/index
 	return #self.m_NPCs
+end
+
+function NPCManager:registerNPCType(classt)
+	self.m_NPCTypes[classt.getNPCType()] = classt
 end

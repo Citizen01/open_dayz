@@ -1,7 +1,7 @@
 -- ****************************************************************************
 -- *
 -- *  PROJECT:     Open MTA:DayZ
--- *  FILE:        server/classes/RPCHandler/NPC_RPC.lua
+-- *  FILE:        server/classes/RPCHandler/NpcRPC.lua
 -- *  PURPOSE:     NPC RPC class
 -- *
 -- ****************************************************************************
@@ -37,7 +37,7 @@ end
 
 
 -- Some helper functions
-function NpcRPC.checkSyncer(npc, syncer)
+function NpcRPC.checkSyncer(npc, triggeredBy)
 	if not npc:isSyncer(triggeredBy) then
 		local syncerName = "No syncer"
 		local syncer = getElementSyncer(npc)
@@ -49,4 +49,3 @@ function NpcRPC.checkSyncer(npc, syncer)
 	end
 	return true
 end
-

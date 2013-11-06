@@ -10,7 +10,6 @@ PlayerRPC = inherit(RPC)
 function PlayerRPC:constructor()
 	-- Object creation RPCs
 	self:register(RPC_NPC_CREATE, PlayerRPC.npcCreate)
-	self:register(RPC_ZOMBIE_CREATE, PlayerRPC.zombieCreate)
 
 	self:register(RPC_PLAYER_LOGIN, PlayerRPC.playerLogin)
 	self:register(RPC_PLAYER_REGISTER, PlayerRPC.playerRegister)
@@ -32,12 +31,9 @@ function PlayerRPC.toElement(element)
 	return element
 end
 
-function PlayerRPC.npcCreate(npc)
-	NPCManager:getSingleton():addNPCByRef(npc, "NPC") -- Todo
-end
-
-function PlayerRPC.zombieCreate(zombie)
-	ZombieManager:getSingleton():addZombieByRef(zombie, "Zombie") -- Todo
+function PlayerRPC.npcCreate(player, npc, npcType)
+	outputDebug(("player: %s npc: %s, npcType: %s"):format(tostring(player), tostring(npc), tostring(npcType)))
+	NPCManager:getSingleton():addNPCByRef(npc, npcType)
 end
 
 function PlayerRPC.playerLogin(player, status, reason, locale)

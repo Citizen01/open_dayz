@@ -8,10 +8,17 @@
 NPCManager = inherit(Singleton)
 
 function NPCManager:constructor()
+	self.m_NPCTypes = {}
 	
+	-- Register npc types
+	self:registerNPCType(Zombie)
 end
 
-function NPCManager:addNPCByRef(npc, class)
+function NPCManager:addNPCByRef(npc, npcType)
 	-- npc is the ped element -> we call enew, so that NPC:constructor will be calle
-	enew(npc, _G[class])
+	enew(npc, self.m_NPCTypes[npcType])
+end
+
+function NPCManager:registerNPCType(classt)
+	self.m_NPCTypes[classt.getNPCType()] = classt
 end

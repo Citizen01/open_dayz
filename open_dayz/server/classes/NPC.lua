@@ -5,7 +5,7 @@
 -- *  PURPOSE:     NPC class
 -- *
 -- ****************************************************************************
-NPC = inherit(Object)
+NPC = inherit(Exported)
 
 -- NPC status:
 enum("NPC_STATUS_IDLE", "npcstatus") -- Doing nothing / Walking around
@@ -28,10 +28,12 @@ function NPC:constructor()
 	NPCManager:getSingleton():addRef(self)
 	
 	-- Tell all clients that the world has got a new NPC now
-	self:rpc(RPC_NPC_CREATE, ped, "Zombie")
+	self:rpc(RPC_NPC_CREATE, self, self.getNPCType())
 end
 
 function NPC:move(targetX, targetY, targetZ)
+	outputChatBox(debug.traceback())
+	outputDebug(("NPC:move(%s, %s, %s)"):format(tostring(targetX), tostring(targetY), tostring(targetZ)))
 	self:rpc(RPC_NPC_MOVE, targetX, targetY, targetZ)
 end
 
@@ -62,3 +64,5 @@ end
 function NPC:isSyncer(player)
 	return getElementSyncer(self) == player
 end
+
+NPC.getNPCType = pure_virtual

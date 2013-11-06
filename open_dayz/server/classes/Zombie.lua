@@ -17,3 +17,7 @@ function Zombie:constructor()
 
 	self.m_LastSeen = Vector(0, 0, 0)
 end
+
+function Zombie.getNPCType()
+	return 1
+end

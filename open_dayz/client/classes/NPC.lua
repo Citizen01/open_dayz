@@ -5,7 +5,7 @@
 -- *  PURPOSE:     NPC class
 -- *
 -- ****************************************************************************
-NPC = inherit(Object)
+NPC = inherit(Exported)
 
 -- NPC status:
 enum("NPC_STATUS_IDLE", "npcstatus") -- Doing nothing / Walking around
@@ -35,9 +35,8 @@ function NPC:updateDistanceToTarget(target)
 	self.m_DistanceToTarget = getDistanceBetweenPoints3D(x, y, z, tx, ty, tz) 
 end
 
--- Just calculating information that is needed to move the NPC and sending to the server
 function NPC:move(tx, ty, tz)
-	self:rpc(RPC_NPC_MOVE, rot)
+	self:rpc(RPC_NPC_MOVE, tx, ty, tz)
 end
 
 -- Actually moving the NPC
@@ -92,3 +91,5 @@ end
 function NPC:syncerChanged()
 
 end
+
+NPC.getNPCType = pure_virtual
